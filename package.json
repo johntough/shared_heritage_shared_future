@@ -1,0 +1,18 @@
+{
+    "name": "shared_heritage_shared_future",
+    "description": "Shared Heritage - Shared Future",
+    "author": "John Tough",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/johntough/shared_heritage_shared_future.git"
+    },
+    "dependencies": {
+        "express": "4.12.4",
+        "sqlite3": "3.0.8"
+    },
+    "scripts": {
+        "start": "node nodejs_db_with_rest_api.js"
+    },
+    "main": "nodejs_db_with_rest_api.js"
+}

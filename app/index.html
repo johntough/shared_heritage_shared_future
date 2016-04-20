@@ -1,0 +1,125 @@
+<!doctype html>
+<html ng-app="shared_heritage_shared_future">
+    <head>
+        <title>Shared Heritage - Shared Future</title>
+        <!-- favicon -->
+        <!--link rel='shortcut icon' href='resources/images/favicon.ico?v=1' type='image/x-icon'/ -->
+        <!-- Google tags -->
+        <meta name="description" content="Shared Heritage - Shared Future" />
+        <meta name="keywords" content="shared heritage shared future" />
+
+        <meta name="author" content="John Tough" />
+        <meta name="copyright" content="Copyright John Tough 2016" />
+        <meta name="application-name" content="Shared Heritage - Shared Future" />
+
+        <!-- Library files for Angular -->
+        <script src="resources/js/angular/angular.min.js" type="text/javascript" ></script>
+        <script src="resources/js/angular/angular-animate.min.js" type="text/javascript" ></script>
+        <script src="resources/js/angular/angular-sanitize.js" type="text/javascript" ></script>
+
+        <!-- Library files for jQuery -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+        <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+
+        <!-- Google Maps -->
+        <script src="http://maps.googleapis.com/maps/api/js?v=3" type="text/javascript"></script>
+
+    </head>
+        <!-- Application files -->
+        <script src="app.js"></script>
+    </head>
+<style type="text/css">
+  #map_canvas { height: 560px; width: 100%  }
+    #map_canvas img {
+        max-width: none;
+    }
+    #map_canvas div {
+        -webkit-transform: translate3d(0,0,0);
+    }
+</style>
+<script type="text/javascript">
+    function initialize() {
+        // Create an array of styles.
+        var styles = [{
+                stylers: [
+                    { hue: "#00ffe6" },
+                    { saturation: -20 }
+                ]
+                },{
+                    featureType: "road",
+                    elementType: "geometry",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                },{
+                    featureType: "road",
+                    elementType: "labels",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                }
+            ];
+
+        var myLatlng = new google.maps.LatLng(39.873078, -3.425662);
+
+        var myOptions = {
+            zoom: 6,
+            center: myLatlng,
+            disableDefaultUI: true,
+            zoomControl: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+    
+        // Create a new StyledMapType object, passing it the array of styles,
+        // as well as the name to be displayed on the map type control.
+        var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+    
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        //Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set('map_style', styledMap);
+        map.setMapTypeId('map_style');
+
+ var contentString = '<div id="content">'+
+      '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png"/>'+
+      '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp;&nbsp; Example Info Window</h1>'+
+      '<div id="bodyContent">'+
+      '<br>'+
+      '<iframe width="560" height="315" src="https://www.youtube.com/embed/ACQX5nMl2wQ" frameborder="0" allowfullscreen></iframe>'+
+      '<br>'+
+      '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.'+
+      'Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.'+
+      'Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.'+
+      'Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.'+
+      'Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.</p>'+
+      '</div>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+  var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    title: 'Example Info Window'
+  });
+  marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+    }
+</script>
+<div data-role="page">
+
+    <div data-role="header" data-position="fixed">
+        <h1>Shared Heritage - Shared Future</h1>
+    </div>
+
+<div data-role="content">
+  <div id="map_canvas" ></div>
+</div>
+
+<body onload="initialize()">
+
+
+</html>

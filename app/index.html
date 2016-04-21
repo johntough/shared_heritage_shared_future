@@ -113,10 +113,6 @@
                 content: hinojaresContentString
             });
 
-            hinojaresMarker.addListener('click', function() {
-                hinojaresInfowindow.open(map, hinojaresMarker);
-            });
-
             // *****************************************************
             // Granada
             // *****************************************************
@@ -147,9 +143,6 @@
 
             var granadaInfowindow = new google.maps.InfoWindow({
                 content: granadaContentString
-            });
-            granadaMarker.addListener('click', function() {
-                granadaInfowindow.open(map, granadaMarker);
             });
 
             // *****************************************************
@@ -182,9 +175,6 @@
             var jaenInfowindow = new google.maps.InfoWindow({
                 content: jaenContentString
             });
-            jaenMarker.addListener('click', function() {
-                jaenInfowindow.open(map, jaenMarker);
-            });
 
             // *****************************************************
             // Pico Mágina
@@ -214,7 +204,27 @@
             var picoMaginaInfowindow = new google.maps.InfoWindow({
                 content: picoMaginaContentString
             });
+
+            var closeInfoWindows = function() {
+                hinojaresInfowindow.close();
+                granadaInfowindow.close();
+                jaenInfowindow.close();
+                picoMaginaInfowindow.close();
+            };
+            hinojaresMarker.addListener('click', function() {
+                closeInfoWindows();
+                hinojaresInfowindow.open(map, hinojaresMarker);
+            });
+            granadaMarker.addListener('click', function() {
+                closeInfoWindows();
+                granadaInfowindow.open(map, granadaMarker);
+            });
+            jaenMarker.addListener('click', function() {
+                closeInfoWindows();
+                jaenInfowindow.open(map, jaenMarker);
+            });
             picoMaginaMarker.addListener('click', function() {
+                closeInfoWindows();
                 picoMaginaInfowindow.open(map, picoMaginaMarker);
             });
 

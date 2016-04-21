@@ -55,11 +55,11 @@
                     }
                 ];
 
-            var myLatlng = new google.maps.LatLng(39.873078, -3.425662);
+            var mapCenterLatlng = new google.maps.LatLng(39.873078, -3.425662);
 
             var myOptions = {
                 zoom: 6,
-                center: myLatlng,
+                center: mapCenterLatlng,
                 disableDefaultUI: true,
                 zoomControl: true,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -99,8 +99,9 @@
                 content: contentString
             });
 
+            var hinojaresLatlng = new google.maps.LatLng(37.715497, -2.998969);
             var marker = new google.maps.Marker({
-                position: myLatlng,
+                position: hinojaresLatlng,
                 map: map,
                 title: 'Hinojares'
             });

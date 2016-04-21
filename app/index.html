@@ -25,101 +25,102 @@
         <!-- Google Maps -->
         <script src="http://maps.googleapis.com/maps/api/js?v=3" type="text/javascript"></script>
 
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="resources/css/custom-styles.css" />
     </head>
         <!-- Application files -->
         <script src="app.js"></script>
     </head>
-<style type="text/css">
-  #map_canvas { height: 560px; width: 100%  }
-    #map_canvas img {
-        max-width: none;
-    }
-    #map_canvas div {
-        -webkit-transform: translate3d(0,0,0);
-    }
-</style>
-<script type="text/javascript">
-    function initialize() {
-        // Create an array of styles.
-        var styles = [{
-                stylers: [
-                    { hue: "#00ffe6" },
-                    { saturation: -20 }
-                ]
-                },{
-                    featureType: "road",
-                    elementType: "geometry",
+
+    <script type="text/javascript">
+        function initialize() {
+            // Create an array of styles.
+            var styles = [{
                     stylers: [
-                        { visibility: "off" }
+                        { hue: "#00ffe6" },
+                        { saturation: -20 }
                     ]
-                },{
-                    featureType: "road",
-                    elementType: "labels",
-                    stylers: [
-                        { visibility: "off" }
-                    ]
-                }
-            ];
+                    },{
+                        featureType: "road",
+                        elementType: "geometry",
+                        stylers: [
+                            { visibility: "off" }
+                        ]
+                    },{
+                        featureType: "road",
+                        elementType: "labels",
+                        stylers: [
+                            { visibility: "off" }
+                        ]
+                    }
+                ];
 
-        var myLatlng = new google.maps.LatLng(39.873078, -3.425662);
+            var myLatlng = new google.maps.LatLng(39.873078, -3.425662);
 
-        var myOptions = {
-            zoom: 6,
-            center: myLatlng,
-            disableDefaultUI: true,
-            zoomControl: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+            var myOptions = {
+                zoom: 6,
+                center: myLatlng,
+                disableDefaultUI: true,
+                zoomControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
     
-        // Create a new StyledMapType object, passing it the array of styles,
-        // as well as the name to be displayed on the map type control.
-        var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
-    
-        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-        //Associate the styled map with the MapTypeId and set it to display.
-        map.mapTypes.set('map_style', styledMap);
-        map.setMapTypeId('map_style');
+            // Create a new StyledMapType object, passing it the array of styles,
+            // as well as the name to be displayed on the map type control.
+            var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
 
- var contentString = '<div id="content">'+
-      '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/1280px-Flag_of_Spain.svg.png"/>'+
-      '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp;&nbsp; Example Info Window</h1>'+
-      '<div id="bodyContent">'+
-      '<br>'+
-      '<iframe width="560" height="315" src="https://www.youtube.com/embed/ACQX5nMl2wQ" frameborder="0" allowfullscreen></iframe>'+
-      '<br>'+
-      '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.'+
-      'Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.'+
-      'Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.'+
-      'Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.'+
-      'Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosq.</p>'+
-      '</div>'+
-      '</div>';
+            var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            //Associate the styled map with the MapTypeId and set it to display.
+            map.mapTypes.set('map_style', styledMap);
+            map.setMapTypeId('map_style');
 
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
+            var contentString = 
+                '<div id="content">'+
+                    '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="resources/images/flag_of_jaén.png"/>'+
+                    '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp;&nbsp; Hinojares - Province of Jaén</h1>'+
+                    '<div id="bodyContent">'+
+                        '<br>'+
+                        '<iframe width="560" height="315" src="https://www.youtube.com/embed/4xUL1GpR2lU" frameborder="0" allowfullscreen></iframe>'+
+                        '<br>'+
+                        '<p>Hinojares is a town located in the province of Jaén, Spain. According to the 2014 census the municipality has a population of 370 inhabitants.'+
+                        '<br>'+
+                        '<br>'+
+                        'Jaén is a province of southern Spain, in the eastern part of the autonomous community of Andalusia. It is bordered by the provinces of Ciudad Real, '+
+                        'Albacete, Granada and Córdoba. Its capital is Jaén city.'+
+                        '<br>'+
+                        '<br>'+
+                        'Its area is 13,484 km². Its population is 657,387 (2003), of whom just about one-sixth live in the capital. It contains 97 municipalities.'+
+                        'The highest point of the province is Pico Mágina (2165 m).'+
+                        '</p>'+
+                    '</div>'+
+                '</div>';
 
-  var marker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-    title: 'Example Info Window'
-  });
-  marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
-    }
-</script>
-<div data-role="page">
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
 
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: 'Hinojares'
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+        }
+    </script>
+
+    <div data-role="page">
+
+    <!-- Application Header -->
     <div data-role="header" data-position="fixed">
         <h1>Shared Heritage - Shared Future</h1>
     </div>
 
-<div data-role="content">
-  <div id="map_canvas" ></div>
-</div>
+    <!-- Map Canvas -->
+    <div data-role="content">
+        <div id="map_canvas" style="width: 100%; height: 100%; position: absolute;"></div>
+    </div>
 
-<body onload="initialize()">
-
-
+    <body onload="initialize()" />
 </html>

@@ -24,6 +24,8 @@
 
         <!-- Google Maps -->
         <script src="http://maps.googleapis.com/maps/api/js?v=3" type="text/javascript"></script>
+        <!-- Marker Clusterer -->
+        <script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js" type="text/javascript"></script>
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="resources/css/custom-styles.css" />
@@ -74,7 +76,19 @@
             map.mapTypes.set('map_style', styledMap);
             map.setMapTypeId('map_style');
 
-            var contentString = 
+            var blueIconSrc = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+
+            // *****************************************************
+            // Hinojares
+            // *****************************************************
+            var hinojaresMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(37.715497, -2.998969),
+                title: 'Hinojares',
+                map: map,
+                icon: blueIconSrc
+            });
+
+            var hinojaresContentString = 
                 '<div id="content">'+
                     '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="resources/images/flag_of_jaén.png"/>'+
                     '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp;&nbsp; Hinojares - Province of Jaén</h1>'+
@@ -95,19 +109,119 @@
                     '</div>'+
                 '</div>';
 
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
+            var hinojaresInfowindow = new google.maps.InfoWindow({
+                content: hinojaresContentString
             });
 
-            var hinojaresLatlng = new google.maps.LatLng(37.715497, -2.998969);
-            var marker = new google.maps.Marker({
-                position: hinojaresLatlng,
+            hinojaresMarker.addListener('click', function() {
+                hinojaresInfowindow.open(map, hinojaresMarker);
+            });
+
+            // *****************************************************
+            // Granada
+            // *****************************************************
+            var granadaMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(37.1773, -3.5986),
+                title: 'Granada',
                 map: map,
-                title: 'Hinojares'
+                icon: blueIconSrc
             });
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
+
+            var granadaContentString = 
+                '<div id="content">'+
+                    '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="resources/images/flag_of_granada.png"/>'+
+                    '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp;&nbsp; Granada</h1>'+
+                    '<div id="bodyContent">'+
+                        '<br>'+
+                        '<p>Granada is a city and the capital of the province of Granada, in the autonomous community of Andalusia, Spain.'+
+                        '<br>'+
+                        '<br>'+
+                        'Granada is located at the foot of the Sierra Nevada mountains, at the confluence of four rivers, '+
+                        'the Beiro, the Darro, the Genil and the Monachil.'+
+                        '<br>'+
+                        '<br>'+
+                        'It sits at an average elevation of 738 metres above sea level, yet is only one hour by car from the Mediterranean coast, the Costa Tropical.'+
+                        '</p>'+
+                    '</div>'+
+                '</div>';
+
+            var granadaInfowindow = new google.maps.InfoWindow({
+                content: granadaContentString
             });
+            granadaMarker.addListener('click', function() {
+                granadaInfowindow.open(map, granadaMarker);
+            });
+
+            // *****************************************************
+            // Jaén
+            // *****************************************************
+            var jaenMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(37.7796, -3.7849),
+                title: 'Ciudad de Jaén',
+                map: map,
+                icon: blueIconSrc
+            });
+
+            var jaenContentString = 
+                '<div id="content">'+
+                    '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="resources/images/flag_of_jaén_city.png"/>'+
+                    '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp;&nbsp; Jaén</h1>'+
+                    '<div id="bodyContent">'+
+                        '<br>'+
+                        '<p>Jaén is a city in south-central Spain. The name is derived from the Arabic word khayyān (\'crossroads of caravans\').'+
+                        '<br>'+
+                        '<br>'+
+                        'It is the capital of the province of Jaén. It is located in the autonomous community of Andalusia.'+
+                        '<br>'+
+                        '<br>'+
+                        'The inhabitants of the city are known as Jiennenses. Its population is 116,731 (2012), about one-sixth of the population of the province.'+
+                        '</p>'+
+                    '</div>'+
+                '</div>';
+
+            var jaenInfowindow = new google.maps.InfoWindow({
+                content: jaenContentString
+            });
+            jaenMarker.addListener('click', function() {
+                jaenInfowindow.open(map, jaenMarker);
+            });
+
+            // *****************************************************
+            // Pico Mágina
+            // *****************************************************
+            var picoMaginaMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(37.7250, -3.4667),
+                title: 'Pico Mágina',
+                map: map,
+                icon: blueIconSrc
+            });
+
+            var picoMaginaContentString = 
+                '<div id="content">'+
+                    '<h1 id="firstHeading" class="firstHeading">Pico Mágina</h1>'+
+                    '<div id="bodyContent">'+
+                        '<p>Pico Mágina is a 2,165-metre (7,103 ft) high mountain in Spain.'+
+                        '<br>'+
+                        '<br>'+
+                        'The mountain is located in Jaén Province, in the northern part of the autonomous community of Andalusia.'+
+                        '<br>'+
+                        '<br>'+
+                        'It\'s the highest peak of the province and also of Sierra Mágina, and is located on the border between the municipalities of Albanchez de Mágina and Huelma.'+
+                        '</p>'+
+                    '</div>'+
+                '</div>';
+
+            var picoMaginaInfowindow = new google.maps.InfoWindow({
+                content: picoMaginaContentString
+            });
+            picoMaginaMarker.addListener('click', function() {
+                picoMaginaInfowindow.open(map, picoMaginaMarker);
+            });
+
+            var markerArray = [];
+            markerArray.push(hinojaresMarker, granadaMarker, jaenMarker, picoMaginaMarker);
+            var markerClustererOptions = {gridSize: 50};
+            var markerClusterer = new MarkerClusterer(map, markerArray, markerClustererOptions);
         }
     </script>
 

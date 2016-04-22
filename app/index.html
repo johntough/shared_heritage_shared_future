@@ -86,6 +86,12 @@
                             { visibility: "off" }
                         ]
                     },{
+                        featureType: "transit",
+                        "elementType": "geometry",
+                        stylers: [
+                            { visibility: "off" }
+                        ]
+                    },{
                         featureType: "administrative.neighborhood",
                         elementType: "labels",
                         stylers: [
@@ -113,7 +119,7 @@
             map.mapTypes.set('map_style', styledMap);
             map.setMapTypeId('map_style');
 
-            var blueIconSrc = "http://maps.google.com/mapfiles/ms/icons/orange-dot.png";
+            var blueIconSrc = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
 
             // *****************************************************
             // Hinojares
@@ -274,10 +280,12 @@
             markerArray.push(hinojaresMarker, granadaMarker, jaenMarker, picoMaginaMarker);
             var markerClustererOptions = {
                 gridSize: 50,
+                zoomOnClick: false,
                 styles: [{
-                    height: 66,
-                    url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m3.png",
-                    width: 66
+                    textColor: "red",
+                    height: 56,
+                    url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m2.png",
+                    width: 55
                 }]
             };
             var markerClusterer = new MarkerClusterer(map, markerArray, markerClustererOptions);

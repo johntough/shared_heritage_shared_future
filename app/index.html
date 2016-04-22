@@ -38,10 +38,22 @@
         function initialize() {
             // Create an array of styles.
             var styles = [{
-                    stylers: [
-                        { hue: "#00ffe6" },
-                        { saturation: -20 }
-                    ]
+                        featureType: "water",
+                        elementType: "all",
+                        stylers: [
+                            { hue: '#ffff00' },
+                            { saturation: '100' },
+                            { lightness: '-10' },
+                            { visibility: "on" }
+                        ]
+                    },{
+                        featureType: "landscape",
+                        elementType: "all",
+                        stylers: [
+                            { hue: '#ff3300' },
+                            { saturation: '100' },
+                            { lightness: '-10' },
+                        ]
                     },{
                         featureType: "road",
                         elementType: "geometry",
@@ -53,6 +65,13 @@
                         elementType: "labels",
                         stylers: [
                             { visibility: "off" }
+                        ]
+                    },{
+                        featureType: "poi",
+                        stylers: [
+                            { hue: '#ff0000' },
+                            { saturation: '100' },
+                            { lightness: '-10' },
                         ]
                     },{
                         featureType: "poi",
@@ -94,7 +113,7 @@
             map.mapTypes.set('map_style', styledMap);
             map.setMapTypeId('map_style');
 
-            var blueIconSrc = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+            var blueIconSrc = "http://maps.google.com/mapfiles/ms/icons/orange-dot.png";
 
             // *****************************************************
             // Hinojares
@@ -109,7 +128,7 @@
             var hinojaresContentString = 
                 '<div id="content">'+
                     '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="resources/images/flag_of_jaén.png"/>'+
-                    '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp;&nbsp; Hinojares - Province of Jaén</h1>'+
+                    '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp; Hinojares - Province of Jaén</h1>'+
                     '<div id="bodyContent">'+
                         '<br>'+
                         '<iframe width="560" height="315" src="https://www.youtube.com/embed/4xUL1GpR2lU" frameborder="0" allowfullscreen></iframe>'+
@@ -144,7 +163,7 @@
             var granadaContentString = 
                 '<div id="content">'+
                     '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="resources/images/flag_of_granada.png"/>'+
-                    '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp;&nbsp; Granada</h1>'+
+                    '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp; Granada</h1>'+
                     '<div id="bodyContent">'+
                         '<br>'+
                         '<p>Granada is a city and the capital of the province of Granada, in the autonomous community of Andalusia, Spain.'+
@@ -176,7 +195,7 @@
             var jaenContentString = 
                 '<div id="content">'+
                     '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="resources/images/flag_of_jaén_city.png"/>'+
-                    '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp;&nbsp; Jaén</h1>'+
+                    '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp; Jaén</h1>'+
                     '<div id="bodyContent">'+
                         '<br>'+
                         '<p>Jaén is a city in south-central Spain. The name is derived from the Arabic word khayyān (\'crossroads of caravans\').'+
@@ -253,7 +272,14 @@
 
             var markerArray = [];
             markerArray.push(hinojaresMarker, granadaMarker, jaenMarker, picoMaginaMarker);
-            var markerClustererOptions = {gridSize: 50};
+            var markerClustererOptions = {
+                gridSize: 50,
+                styles: [{
+                    height: 66,
+                    url: "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/images/m3.png",
+                    width: 66
+                }]
+            };
             var markerClusterer = new MarkerClusterer(map, markerArray, markerClustererOptions);
         }
     </script>

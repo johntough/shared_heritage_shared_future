@@ -130,18 +130,17 @@ function initialize() {
 
     var granadaContentString = 
         '<div id="content">'+
-            '<IMG BORDER="0" height="40" width="60" ALIGN="Left" SRC="resources/images/flag_of_granada.png"/>'+
-            '<h1 id="firstHeading" class="firstHeading">&nbsp;&nbsp;&nbsp; Granada</h1>'+
+            '<h1 id="firstHeading" class="firstHeading">Granada</h1>'+
             '<div id="bodyContent">'+
+                '<div id="sliderFrame">'+
+                '    <div id="slider">'+
+                '        <img src="http://www.dronestagr.am/wp-content/uploads/2014/06/Alhambra-de-Granada2-640x360.jpg" alt="Granada" />'+
+                '        <img src="http://www.pinkpangea.com/wp-content/uploads/2015/01/8873025734_241c7d1bed_z-640x360.jpg" />'+
+                '        <img src="http://www.pinkpangea.com/wp-content/uploads/2015/10/5046076301_f93e87f5aa_z-640x360.jpg" />'+
+                '    </div>'+
+                '</div> '+
                 '<br>'+
                 '<p>Granada is a city and the capital of the province of Granada, in the autonomous community of Andalusia, Spain.'+
-                '<br>'+
-                '<br>'+
-                'Granada is located at the foot of the Sierra Nevada mountains, at the confluence of four rivers, '+
-                'the Beiro, the Darro, the Genil and the Monachil.'+
-                '<br>'+
-                '<br>'+
-                'It sits at an average elevation of 738 metres above sea level, yet is only one hour by car from the Mediterranean coast, the Costa Tropical.'+
                 '</p>'+
             '</div>'+
         '</div>';
